@@ -1,5 +1,7 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import { Links, LiveReload, Meta, Outlet } from "@remix-run/react";
+import { Links, LiveReload, Meta, Outlet, Scripts } from "@remix-run/react";
+
+import { Navbar } from "~/components/navbar";
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 
@@ -19,9 +21,13 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+        <Scripts />
       </head>
       <body>
-        <Outlet />
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
         <LiveReload />
       </body>
     </html>
