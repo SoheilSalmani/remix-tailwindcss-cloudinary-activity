@@ -17,6 +17,10 @@ const navigation = [
   { name: "Calendar", href: "#", current: false },
 ];
 
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
 export function Navbar() {
   const [enabled, setEnabled] = React.useState(false);
 
@@ -24,7 +28,7 @@ export function Navbar() {
     <nav className="bg-gray-800 px-2">
       <Disclosure>
         {({ open }) => (
-          <header>
+          <div>
             <div className="relative flex h-16 items-center justify-between">
               <Disclosure.Button className="absolute left-0 block rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                 {open ? (
@@ -53,7 +57,7 @@ export function Navbar() {
                     onChange={setEnabled}
                     className={`${
                       enabled ? "bg-gray-500" : "bg-gray-400"
-                    } relative inline-flex h-6 w-11 items-center rounded-full ring-offset-gray-800 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-white`}
+                    } relative inline-flex h-6 w-11 items-center rounded-full ring-offset-gray-800 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2`}
                   >
                     <span className="sr-only">Enable notifications</span>
                     <span
@@ -74,21 +78,24 @@ export function Navbar() {
                 </button>
               </div>
             </div>
-            <Disclosure.Panel>
-              <div>
-                {navigation.map((item) => (
-                  <Disclosure.Button
-                    className="block text-gray-300 hover:text-white"
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-              </div>
+            <Disclosure.Panel className="space-y-1 pb-3 pt-2">
+              {navigation.map((item) => (
+                <Disclosure.Button
+                  className={classNames(
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium outline-none focus:ring-2 focus:ring-white"
+                  )}
+                  key={item.name}
+                  as="a"
+                  href={item.href}
+                >
+                  {item.name}
+                </Disclosure.Button>
+              ))}
             </Disclosure.Panel>
-          </header>
+          </div>
         )}
       </Disclosure>
     </nav>
