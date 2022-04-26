@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 import {
-  BookOpenIcon,
+  TerminalIcon,
   MenuIcon,
   MoonIcon,
   SunIcon,
@@ -39,10 +39,10 @@ export function Navbar() {
               </Disclosure.Button>
               <div className="flex flex-grow justify-center">
                 <Link
-                  className="block rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                  className="block rounded-md p-1 text-indigo-500 hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-white"
                   to="/"
                 >
-                  <BookOpenIcon className="h-11 w-12 text-indigo-400 hover:text-indigo-200" />
+                  <TerminalIcon className="block h-9 w-9" />
                 </Link>
               </div>
               <div className="absolute right-0 flex items-center gap-3">
