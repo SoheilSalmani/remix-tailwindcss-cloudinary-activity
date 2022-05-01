@@ -23,9 +23,9 @@ export default function App() {
         <Links />
         <Scripts />
       </head>
-      <body>
+      <body className="bg-gray-100">
         <Navbar />
-        <main>
+        <main className="mx-auto max-w-7xl py-4 px-2">
           <Outlet />
         </main>
         <LiveReload />
